@@ -24,8 +24,8 @@ class App extends Component {
           descricao: 'Mais um dia de muitos bugs :)', 
           imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png', 
           imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',  
-          likeada: false, 
-          likers: 0
+          likeada: true, 
+          likers: 1
          },
         {
           id: '2', 
@@ -90,6 +90,7 @@ class App extends Component {
 
       <FlatList
       showsHorizontalScrollIndicator={false}
+      keyExtractor={(item) => item.id}
       data={this.state.feed}
       renderItem={ ({item}) => <Lista data={item} /> }
       />
