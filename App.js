@@ -3,52 +3,51 @@ import {
   View,
   Text,
   StyleSheet,
-  FlatList,
+  FlatList
   } from 'react-native';
+
+import Pessoas from './src/Pessoas';
 
 class App extends Component{
 
   constructor(props){
     super(props);
     this.state = {
-      feed:[
-        {id:'1', nome: 'Matheus', idade: 50, email: 'matheus@matheus.com'},
-        {id:'2',nome: 'João', idade: 23, email: 'João@João.com'},
-        {id:'3',nome: 'Carlos', idade: 18, email: 'Carlos@Carlos.com'},
-        {id:'4',nome: 'Pedro', idade: 20, email: 'Pedro@Pedro.com'},
+      lista: [
+        {id: '1', nome:'Matheus', idade:50, email:'matheus@matheus.com'},
+        {id: '2', nome:'Thiago', idade:33, email:'thiago@thiago.com'},
+        {id: '3', nome:'Lucas', idade:20, email:'lucas@lucas.com'},
+        {id: '4', nome:'Henrique', idade:50, email:'Henrique@Henrique.com'},
+        {id: '5', nome:'Thiago', idade:33, email:'thiago@thiago.com'},
+        {id: '6', nome:'Lucas', idade:20, email:'lucas@lucas.com'},
+        {id: '7', nome:'JOSE', idade:33, email:'thiago@thiago.com'},
+        {id: '8', nome:'HENRIQUE', idade:20, email:'lucas@lucas.com'},
+
       ]
-    }
+    };
   }
 
   render(){
     return(
-      <View style={StyleSheet.container}>
-      
+      <View style={styles.container}> 
+
       <FlatList
-      data={this.state.feed}
-      keyExtractor={(item) => item.id}
-      renderItem={({item}) => <Pessoa data={item}/>}
+      data={this.state.lista}
+      keyExtractor={(item)=> item.id}
+      renderItem={ ({item}) => <Pessoas data={item} /> }
       />
 
-      </View>
-    )
+      </View>    
+    );
   }
+
 }
 const styles = StyleSheet.create({
   container:{
     flex:1,
   },
-})
+});
+
 export default App;
 
-class Pessoa extends Component{
-  render(){
-    return(
-      <View>
-        <Text>Nome: {this.props.data.nome}</Text>
-        <Text>Idade: {this.props.data.idade}</Text>
-        <Text>Email: {this.props.data.email}</Text>
-      </View>
-    )
-  }
-}
+
