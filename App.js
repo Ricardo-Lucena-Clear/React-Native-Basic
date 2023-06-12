@@ -2,32 +2,29 @@ import React, { Component } from 'react';
 import { 
   View,
   StyleSheet, 
-  Text} from 'react-native';
-
-  import Slider from '@react-native-community/slider';
+  Text,
+  Switch} from 'react-native';
 
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      valor: 0
+      status: false
     };
     }
 render(){
   return(
     <View style = {styles.container}>
-    <Slider
-      minimumValue={0}
-      maximumValue={100}
-      onValueChange={(valorSelecionado)=>this.setState({valor: valorSelecionado})}
-      value={this.state.valor}
-      minimumTrackTintColor='green'
-      maximumTrackTintColor='red'
-    />
 
-    <Text style={{textAlign: 'center', fontSize: 30}}>
-      {this.state.valor.toFixed(0)}
-    </Text>
+      <Switch
+      value={this.state.status}
+      onValueChange={(valorSwitch) => this.setState({status: valorSwitch})}
+      thumbColor= "red"
+      />
+
+      <Text style={{textAlign: "center", fontSize: 30}}>
+        {(this.state.status) ? "Ativo" : "Inativo"}
+      </Text>
     </View>
     )
   }
